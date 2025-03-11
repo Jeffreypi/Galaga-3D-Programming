@@ -4,6 +4,7 @@ public class SpawnerLogic : MonoBehaviour
 {
     [SerializeField] private GameObject _obj;
     [SerializeField] private KeyCode _key;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
