@@ -178,10 +178,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 46
   field of view: 49.1
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -586,7 +586,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.59, z: 0}
-  m_LocalScale: {x: 100, y: 0.1, z: 100}
+  m_LocalScale: {x: 8, y: 0.1, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
@@ -722,6 +722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _obj: {fileID: 7958106057812680303, guid: 65b346e6df2434e5ba64a069750c8f1b, type: 3}
   _key: 32
+  numOfMissiles: []
 --- !u!1001 &3655640776636776679
 PrefabInstance:
   m_ObjectHideFlags: 0
