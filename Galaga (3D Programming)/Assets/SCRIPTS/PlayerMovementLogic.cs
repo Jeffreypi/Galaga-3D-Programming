@@ -1,4 +1,3 @@
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class PlayerMovementLogic : MonoBehaviour
@@ -6,25 +5,32 @@ public class PlayerMovementLogic : MonoBehaviour
     private Vector3 PlayerMovementInput;
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private float Speed;
-    
+    [SerializeField] private AudioSource audioSource; // Audio source for sound playback
+    [SerializeField] private AudioClip missileLaunchSound; // Sound for missile launch
+    [SerializeField] private AudioClip missileImpactSound; // Sound for missile impact
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-void PlayerMovementLogicUpdate(){
-    if (Input.GetKey(KeyCode.LeftArrow)){
-        this.transform.position += Vector3.left * this.Speed * Time.deltaTime;
-    } else if(Input.GetKey(KeyCode.RightArrow)){
-        this.transform.position += Vector3.right * this.Speed * Time.deltaTime;
-    }
-  //  PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f);
-}
-    // Update is called once per frame
     void Update()
     {
         PlayerMovementLogicUpdate();
+    }
+
+    void PlayerMovementLogicUpdate()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.position += Vector3.left * Speed * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.position += Vector3.right * Speed * Time.deltaTime;
+        }
+    }
+
+    public void PlayMissileSound(bool isLaunch)
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(isLaunch ? missileLaunchSound : missileImpactSound);
+        }
     }
 }

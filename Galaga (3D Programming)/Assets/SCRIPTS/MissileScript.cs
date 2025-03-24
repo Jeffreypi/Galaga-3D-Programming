@@ -9,6 +9,7 @@ public class MissileScript : MonoBehaviour
     void Start()
     {
         transform.rotation = Quaternion.identity;
+        FindObjectOfType<PlayerMovementLogic>()?.PlayMissileSound(true); // Play missile launch sound
     }
 
     void Update()
@@ -29,7 +30,8 @@ public class MissileScript : MonoBehaviour
             GlobalScoreManager.Instance?.AddScore(scoreValue); // Increment score
             Destroy(other.gameObject);
         }
-        Destroy(gameObject); // Missile always gets destroyed
+        FindObjectOfType<PlayerMovementLogic>()?.PlayMissileSound(false); // Play missile impact sound
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -39,6 +41,7 @@ public class MissileScript : MonoBehaviour
             GlobalScoreManager.Instance?.AddScore(scoreValue); // Increment score
             Destroy(collision.gameObject);
         }
-        Destroy(gameObject); // Missile always gets destroyed
+        FindObjectOfType<PlayerMovementLogic>()?.PlayMissileSound(false); // Play missile impact sound
+        Destroy(gameObject);
     }
 }
