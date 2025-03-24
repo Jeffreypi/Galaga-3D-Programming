@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -397,6 +398,20 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ac4c46d81fe4a9db7243078b51a049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 637502011}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &359430817
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +693,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!4 &637502011 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6080698783537025304, guid: f776016f7cd7b4903afdb0813e984089, type: 3}
+  m_PrefabInstance: {fileID: 1478103223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &663951535
 GameObject:
   m_ObjectHideFlags: 0
