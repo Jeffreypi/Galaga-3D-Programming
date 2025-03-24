@@ -1,26 +1,44 @@
 using UnityEngine;
 
 public class MissileScript : MonoBehaviour
-{   [SerializeField] private Rigidbody rigidbody;
+{
+    [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private float Speed;
-    
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private int scoreValue = 1; // Points awarded per hit
+
     void Start()
     {
-        
+        transform.rotation = Quaternion.identity;
     }
-//you need to hide the scenview in unity for this to work properly.
-//If yhe sceneview can see it, the object wont be destroyed
+
+    void Update()
+    {
+        transform.position += Vector3.forward * Speed * Time.deltaTime;
+    }
+
+    // Destroy the missile when it leaves the camera view
     void OnBecameInvisible()
     {
         Destroy(gameObject);
-       
-        
     }
-    // Update is called once per frame
-    void Update()
+
+    private void OnTriggerEnter(Collider other)
     {
-        this.transform.position += Vector3.forward * this.Speed * Time.deltaTime;
+        if (other.CompareTag("Respawn"))
+        {
+            GlobalScoreManager.Instance?.AddScore(scoreValue); // Increment score
+            Destroy(other.gameObject);
+        }
+        Destroy(gameObject); // Missile always gets destroyed
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Respawn"))
+        {
+            GlobalScoreManager.Instance?.AddScore(scoreValue); // Increment score
+            Destroy(collision.gameObject);
+        }
+        Destroy(gameObject); // Missile always gets destroyed
     }
 }

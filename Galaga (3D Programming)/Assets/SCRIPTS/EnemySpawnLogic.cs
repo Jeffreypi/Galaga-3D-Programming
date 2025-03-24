@@ -2,44 +2,56 @@ using UnityEngine;
 
 public class EnemySpawnLogic : MonoBehaviour
 {
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private float spawnInterval = 1f;
+    [SerializeField] private float waitTime = 9f; // Time before spawning starts
+    [SerializeField] private int maxEnemies = 10; // Spawn limit
 
-    public GameObject enemyPrefab;
-    public Transform[] waypoints;
-    public float spawnInterval = 1f;
-    private int maxEnemies;
     private int currentEnemies = 0;
     private float spawnTimer;
+    private float waitTimer;
+    private bool canSpawn = false;
     private RBYBeeGrid grid;
-    private EnemyBehaviourScript enemyBehaviourScript;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         grid = FindAnyObjectByType<RBYBeeGrid>();
-        
+        waitTimer = 0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        spawnTimer += Time.deltaTime;
-        if(spawnTimer >= spawnInterval){
-            SpawnEnemy();
-            spawnTimer = 0;
+        // Wait before allowing spawning
+        if (!canSpawn)
+        {
+            waitTimer += Time.deltaTime;
+            if (waitTimer >= waitTime)
+            {
+                canSpawn = true;
+                spawnTimer = 0f; // Reset spawn timer when wait time ends
+            }
+            return;
         }
 
-        
+        // Normal spawning logic after wait time
+        spawnTimer += Time.deltaTime;
+        if (spawnTimer >= spawnInterval)
+        {
+            SpawnEnemy();
+            spawnTimer = 0f;
+        }
     }
 
-    void SpawnEnemy(){
-        if (currentEnemies < grid.columnLength * grid.rowLength){
-        GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-        EnemyBehaviourScript enemyScript = enemy.GetComponent<EnemyBehaviourScript>();
-        enemyScript.SetWayPoints(waypoints);
-        enemyScript.SetGrid(grid);
-       // enemyScript.onAddedToGrid += HandleEnemyAddedToGrid;
-        currentEnemies++;
-    }}
-    // void HandleEnemyAddedToGrid(){
-    //     currentEnemies--;
-    // }
+    void SpawnEnemy()
+    {
+        if (currentEnemies < maxEnemies)
+        {
+            GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            EnemyBehaviourScript enemyScript = enemy.GetComponent<EnemyBehaviourScript>();
+            enemyScript.SetWayPoints(waypoints);
+            enemyScript.SetGrid(grid);
+            currentEnemies++;
+        }
+    }
 }

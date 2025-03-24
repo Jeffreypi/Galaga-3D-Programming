@@ -8,7 +8,7 @@ public class EnemyBehaviourScript : MonoBehaviour
     public float speed = 2f;
     public int currentWaypoint = 0;
     [SerializeField] private float kH;  // like a spring constant
-    [SerializeField] private float _rotSpeed;
+    [SerializeField] public float _rotSpeed; // Change from private to public
     public event Action onAddedToGrid;
     private RBYBeeGrid grid;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
