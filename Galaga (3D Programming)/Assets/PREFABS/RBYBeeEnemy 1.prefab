@@ -149,6 +149,9 @@ MonoBehaviour:
   rotationSpeed: 4
   horizontalDriftMin: -1.5
   horizontalDriftMax: 1.5
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &8982543039158432125
 GameObject:
