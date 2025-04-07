@@ -1,67 +1,55 @@
 using UnityEngine;
 
 public class MissileScript : MonoBehaviour
-{   [SerializeField] private Rigidbody rigidbody;
-    [SerializeField] private float Speed;
-    
-    
+{
+    [SerializeField] private Rigidbody rigidbody;  // Rigidbody of the missile
+    [SerializeField] private float Speed;          // Speed of the missile
+    [SerializeField] private int scoreValue = 10;  // Score value when the missile hits an object
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-<<<<<<< Updated upstream
-        
-=======
         transform.rotation = Quaternion.identity;
-        PlayerMovementLogic playerMovementLogic = Object.FindFirstObjectByType<PlayerMovementLogic>();
+
+        // Find the PlayerMovementLogic component
+        PlayerMovementLogic playerMovementLogic = FindObjectOfType<PlayerMovementLogic>();
         if (playerMovementLogic != null)
         {
             playerMovementLogic.PlayMissileSound(true); // Play missile launch sound
         }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     }
-//you need to hide the scenview in unity for this to work properly.
-//If yhe sceneview can see it, the object wont be destroyed
+
+    // If the missile goes off-screen, destroy it
     void OnBecameInvisible()
     {
         Destroy(gameObject);
-       
-        
     }
+
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-        this.transform.position += Vector3.forward * this.Speed * Time.deltaTime;
-=======
-        if (other.CompareTag("Respawn"))
-        {
-            GlobalScoreManager.Instance?.AddScore(scoreValue); // Increment score
-            Destroy(other.gameObject);
-        }
-        PlayerMovementLogic playerMovementLogic = Object.FindFirstObjectByType<PlayerMovementLogic>();
-        if (playerMovementLogic != null)
-        {
-            playerMovementLogic.PlayMissileSound(false); // Play missile impact sound
-        }
-        Destroy(gameObject);
+        // Move missile forward at the specified speed
+        transform.position += Vector3.forward * Speed * Time.deltaTime;
     }
 
+    // On collision with any object, check if it's tagged "Respawn"
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Respawn"))
         {
-            GlobalScoreManager.Instance?.AddScore(scoreValue); // Increment score
-            Destroy(collision.gameObject);
+            // Increment the score and destroy the object that was hit
+            GlobalScoreManager.Instance?.AddScore(scoreValue);
+            Destroy(collision.gameObject); // Destroy the object hit
         }
-        PlayerMovementLogic playerMovementLogic = Object.FindFirstObjectByType<PlayerMovementLogic>();
+
+        // Find the PlayerMovementLogic component again to play impact sound
+        PlayerMovementLogic playerMovementLogic = FindObjectOfType<PlayerMovementLogic>();
         if (playerMovementLogic != null)
         {
             playerMovementLogic.PlayMissileSound(false); // Play missile impact sound
         }
+
+        // Destroy the missile after impact
         Destroy(gameObject);
->>>>>>> Stashed changes
     }
 }
