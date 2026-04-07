@@ -31,7 +31,9 @@ This game features three unique stages and a boss fight.
 
 **Components**
   - Entry stage, challenger stage, boss fight and bonus stage. 
-  - Dyanmic enemies
+  - Multi-stage Dyanmic enemies
+  - Shooting Mechanics
+  - Original Sound Effects 1981
   - Health and point system
 ---
 
