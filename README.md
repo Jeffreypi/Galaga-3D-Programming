@@ -40,4 +40,4 @@ This game features three unique stages and a boss fight.
 ## Author
 
 **Justin Kadyrov, Aman Purohit, Jeffrey Pincombe**  
-Software Developer & Fitness Enthusiast
+Game Development
