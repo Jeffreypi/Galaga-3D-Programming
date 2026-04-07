@@ -3,7 +3,7 @@
 ## Gameplay Preview
 
 <p align="center">
-    <img src="galaga-screenshots/galaga1.gif" width="24%"/>
+    <img src="galaga-screenshots/galaga1.gif" width="75%"/>
 
 </p>
 
