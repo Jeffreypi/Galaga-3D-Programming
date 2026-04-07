@@ -1,13 +1,21 @@
 # MatchBook – Book Recommendation App
 
-## Preview
+## Gameplay Preview
 
 <p align="center">
-  <img src="matchbook/matchbook1.png" width="24%"/>
-  <img src="matchbook/matchbook2.png" width="24%"/>
-  <img src="matchbook/matchbook5.png" width="24%"/>
-  <img src="matchbook/matchbook6.png" width="24%"/>
+    <img src="galaga-screenshots/galaga1.gif" width="24%"/>
+
 </p>
+
+## Screenshots
+
+<p align="center">
+    <img src="galaga-screenshots/galaga2.png" width="24%"/>
+    <img src="galaga-screenshots/galaga3.png" width="24%"/>
+    <img src="galaga-screenshots/galaga4.png" width="24%"/>
+    <img src="galaga-screenshots/galaga5.png" width="24%"/>
+</p>
+
 
 ---
 
@@ -29,5 +37,5 @@ This game features three unique stages and a boss fight.
 
 ## Author
 
-**Justin Kadyrov**  
+**Justin Kadyrov, Aman Purohit, Jeffrey Pincombe**  
 Software Developer & Fitness Enthusiast
